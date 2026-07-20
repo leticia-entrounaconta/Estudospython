@@ -35,6 +35,8 @@ def normalizar_nome(nome):
 
     return " ".join(palavras_formatadas)
 
+
+
 def validar_cpf(cpf):
     # Remove pontos, hífens e espaços extras do CPF digitado.
     cpf = cpf.replace(".", "").replace("-", "").strip()
@@ -70,8 +72,7 @@ def validar_cpf(cpf):
     # Zera a soma para iniciar o cálculo do segundo dígito.
     soma = 0
 
-    # Percorre os primeiros dez dígitos:
-    # os nove iniciais e o primeiro dígito verificador original.
+    # Percorre os primeiros dez dígitosos nove iniciais e o primeiro dígito verificador original.
     for indice in range(10):
         # Agora os pesos vão de 11 até 2.
         soma += int(cpf[indice]) * (11 - indice)
@@ -90,16 +91,18 @@ def validar_cpf(cpf):
 
 print("\n========== 1- Normalizador de Nome ==========")
 
-nome_digitado = input("Digite seu nome completo: ")
+while True:
+    nome_digitado = input("Digite o nome completo: ")
 
-try:
-    nome_normalizado = normalizar_nome(nome_digitado)
-    print(f"Nome normalizado: {nome_normalizado}")
+    try:
+        nome_normalizado = normalizar_nome(nome_digitado)
+        print(f"\nNome normalizado: {nome_normalizado}")
+        break
+    except (ValueError, TypeError) as e:
+        print(f"\nErro: {e}") #esse print mostra o erro que ocorreu, seja ele de valor ou de tipo
+        print("Verifique o nome e tente novamente.\n")
 
-except (ValueError, TypeError) as erro:
-    print(f"Erro: {erro}")
-
-print("\n========== 2- Validador de CPF ==========")
+print("\n============ 2- Validador de CPF ============")
 
 while True:
     cpf_digitado = input("Digite o CPF: ")
@@ -115,4 +118,4 @@ while True:
 
 print("\n")
 print("          PROGRAMA FINALIZADO")
-print("=" * 45)
+print("=" * 45) #repete o '=' 45 vezes 

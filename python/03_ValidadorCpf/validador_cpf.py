@@ -1,5 +1,5 @@
-# Cria uma função chamada validar_cpf.
-# Ela recebe um CPF e devolve True (válido) ou False (inválido).
+
+#Ela recebe um CPF e devolve True (válido) ou False (inválido).
 def validar_cpf(cpf):
     # Remove pontos, hífens e espaços extras do CPF digitado.
     cpf = cpf.replace(".", "").replace("-", "").strip()
@@ -35,8 +35,7 @@ def validar_cpf(cpf):
     # Zera a soma para iniciar o cálculo do segundo dígito.
     soma = 0
 
-    # Percorre os primeiros dez dígitos:
-    # os nove iniciais e o primeiro dígito verificador original.
+    # Percorre os primeiros dez dígitos os nove iniciais e o primeiro dígito verificador original.
     for indice in range(10):
         # Agora os pesos vão de 11 até 2.
         soma += int(cpf[indice]) * (11 - indice)

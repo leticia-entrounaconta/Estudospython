@@ -2,7 +2,7 @@
 
 Projeto simples de uma calculadora feita em Python para praticar entrada de dados, conversão de tipos, operações matemáticas e estruturas condicionais.
 
-## Funcionalidades
+## 📌Funcionalidades
 
 - Adição
 - Subtração
@@ -89,3 +89,8 @@ Erro: não é possível dividir por zero.
 - Tratar erros quando a pessoa digitar letras no lugar de números;
 - Mostrar o cálculo completo, por exemplo: `10.0 + 5.0 = 15.0`;
 - Adicionar potência e porcentagem.
+
+
+## 👩‍💻Autora
+
+Desenvolvido por **Leticia Monteiro** como projeto de estudo em Python.
