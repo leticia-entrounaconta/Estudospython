@@ -8,7 +8,7 @@ Este repositório reúne exercícios e projetos desenvolvidos durante o estágio
 * praticar fundamentos de Python;
 * desenvolver lógica de programação;
 * aprender Git e GitHub;
-* criar soluções aplicáveis ao ambiente profissional.
+* aprender para criar soluções aplicáveis ao ambiente profissional.
 
 ## Conteúdos estudados
 
