@@ -1,64 +1,81 @@
+def normalizar_nome(nome):
+    # Remove espaços do início, do final e espaços duplicados.
+    nome = " ".join(nome.split())
 
-#Ela recebe um CPF e devolve True (válido) ou False (inválido).
+    # Verifica se o nome ficou vazio.
+    if not nome:
+        return None
+
+    # Verifica se o nome possui apenas letras e espaços.
+    if not all(caractere.isalpha() or caractere == " " for caractere in nome):
+        return None
+
+    # Deixa a primeira letra de cada nome maiúscula.
+    return nome.title()
+
+
 def validar_cpf(cpf):
-    # Remove pontos, hífens e espaços extras do CPF digitado.
+    # Remove pontos, traço e espaços.
     cpf = cpf.replace(".", "").replace("-", "").strip()
 
-    # Verifica se o CPF possui exatamente 11 caracteres.
+    # Verifica se o CPF está vazio ou possui tamanho incorreto.
     if len(cpf) != 11:
         return False
 
-    # Verifica se todos os caracteres são números.
+    # Verifica se possui apenas números.
     if not cpf.isdigit():
         return False
 
-    # Impede CPFs com todos os dígitos iguais, como 11111111111.
+    # Impede CPFs com todos os números iguais.
     if cpf == cpf[0] * 11:
         return False
 
-    # Variável que armazenará a soma do cálculo do primeiro dígito.
     soma = 0
 
-    # Percorre os primeiros nove dígitos do CPF.
-    # range(9) gera os números de 0 até 8.
+    # Calcula o primeiro dígito verificador.
     for indice in range(9):
-        # Converte o caractere para número e multiplica pelo peso.
         soma += int(cpf[indice]) * (10 - indice)
 
-    # Calcula o primeiro dígito verificador.
     primeiro_digito = (soma * 10) % 11
 
-    # Se o resultado for 10, o dígito verificador deve ser 0.
     if primeiro_digito == 10:
         primeiro_digito = 0
 
-    # Zera a soma para iniciar o cálculo do segundo dígito.
     soma = 0
 
-    # Percorre os primeiros dez dígitos os nove iniciais e o primeiro dígito verificador original.
+    # Calcula o segundo dígito verificador.
     for indice in range(10):
-        # Agora os pesos vão de 11 até 2.
         soma += int(cpf[indice]) * (11 - indice)
 
-    # Calcula o segundo dígito verificador.
     segundo_digito = (soma * 10) % 11
 
-    # Se o resultado for 10, o dígito verificador deve ser 0.
     if segundo_digito == 10:
         segundo_digito = 0
 
-    # Compara os dois dígitos calculados com os dois últimos dígitos do CPF.
     return cpf[-2:] == f"{primeiro_digito}{segundo_digito}"
 
 
-# Mostra o título do programa.
-print("========== Validador de CPF ==========")
+def formatar_cpf(cpf):
+    # Remove a formatação existente.
+    cpf = cpf.replace(".", "").replace("-", "").strip()
 
-# Solicita o CPF ao usuário.
+    return f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"
+
+
+print("========== Cadastro ==========")
+
+nome_digitado = input("Digite o nome completo: ")
+nome_normalizado = normalizar_nome(nome_digitado)
+
+if nome_normalizado is None:
+    print("Erro: o nome não pode estar vazio ou conter números.")
+else:
+    print(f"Nome normalizado: {nome_normalizado}")
+
+
 cpf_digitado = input("Digite o CPF: ")
 
-# Chama a função e verifica o resultado.
 if validar_cpf(cpf_digitado):
-    print("CPF válido.")
+    print(f"CPF válido: {formatar_cpf(cpf_digitado)}")
 else:
-    print("CPF inválido.")
+    print("Erro: CPF vazio ou inválido.")

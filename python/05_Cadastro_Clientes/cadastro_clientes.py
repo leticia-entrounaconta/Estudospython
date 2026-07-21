@@ -8,7 +8,7 @@ def normalizar_nome(nome):
     if not nome:
         raise ValueError("O nome não pode ficar vazio.")
 
-    caracteres_permitidos = {" ", "-", "'"}
+    caracteres_permitidos = {" ", "-", "'",}
 
     for caractere in nome:
         if not caractere.isalpha() and caractere not in caracteres_permitidos:
