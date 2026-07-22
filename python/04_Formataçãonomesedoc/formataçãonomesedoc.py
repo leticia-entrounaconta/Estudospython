@@ -2,7 +2,6 @@ def normalizar_nome(nome):
    
     nome = " ".join(nome.split())
 
-    
     if not nome:
         return None
 
