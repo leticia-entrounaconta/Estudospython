@@ -1,4 +1,4 @@
-registros = [                                         #lista 
+registros = [                                          #lista 
 
     {"nome": "Ana", "cpf": "12345678901", "idade": 25},
     {"nome": "", "cpf": "98765432100", "idade": 30},
@@ -9,7 +9,7 @@ registros = [                                         #lista
 registros_validos = [] #essa lista recebe o registros que passarem por todas verificações 
 registros_invalidos = [] #essa lista receberá registros que tiverem algum problema 
 
-for numero, registro in enumerate(registros, start=1):#A parte For cria duas variáveis temporárias, numero guarda a posição de registro, registro guarda o registro que está sendo usado aquele momento
+for numero, registro in enumerate(registros, start=1):#a parte For cria duas variáveis temporárias, 'numero' guarda a posição de registro, 'registro' guarda o registro que está sendo usado aquele momento
  #permite que eu percorrar a lista e também obtenha a númeração de cada item
     nome = registro["nome"] #aqui o programa vai pegar o nome do registro
     cpf = registro["cpf"] #aqui o cpf
