@@ -6,7 +6,7 @@ senha_correta = "123456"
 tentativas = 0
 limite_tentativas = 3
 
-while tentativas < limite_tentativas:
+while tentativas < limite_tentativas: #contador
     print(f"\n--- Tentativa {tentativas + 1} de {limite_tentativas} ---")
     usuario_digitado = input("Usuário: ")
     senha_digitado = input("Senha: ")

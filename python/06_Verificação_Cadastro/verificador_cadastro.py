@@ -1,40 +1,60 @@
-                                                               #Input -> inserir
-print("          CONTROLE DE ACESSO")                          #strip -> remover espaços no incio e final do texto
-                                                               #upper -> converter letras minúsculas de uma string em maiúsculas
-nome = input("Digite o nome: ").strip()                        #if -> condição 
-                                                               #isdigit() -> verifica se todos caracteres são números
-idade_texto = input("Digite a idade: ").strip()                #tiltle deixa a primeira letra de cada palavra em maiúscula
-                                                               #if -> se, elif -> se não, else -> senão,
-resposta_ativo = input(
-    "O usuário está ativo? (S/N): "
-).strip().upper() #upper está sendo usado para se o usuário digitar minúsculo o programa transformar em maiúsculo o s / n
+casos_teste = [                       #lista
+    {
+        "nome": "João",
+        "idade": 22,
+        "usuario_ativo": True,
+        "possui_permissao": True
+    },
+    {
+        "nome": "",
+        "idade": 25,
+        "usuario_ativo": True,
+        "possui_permissao": True
+    },
+    {
+        "nome": "Maria",
+        "idade": 17,
+        "usuario_ativo": True,
+        "possui_permissao": True
+    },
+    {
+        "nome": "Carlos",
+        "idade": 30,
+        "usuario_ativo": False,
+        "possui_permissao": True
+    },
+    {
+        "nome": "Ana",
+        "idade": 28,
+        "usuario_ativo": True,
+        "possui_permissao": False
+    }
+]
 
-resposta_permissao = input(
-    "O usuário possui permissão? (S/N): "
-).strip().upper()
+#definindo variavel 
+def verificar_cadastros(lista_de_cadastros):
 
-usuario_ativo = resposta_ativo == "S"
-possui_permissao = resposta_permissao == "S"
+    for cadastro in lista_de_cadastros:
 
+        nome = cadastro["nome"]
+        idade = cadastro["idade"]
+        usuario_ativo = cadastro["usuario_ativo"]
+        possui_permissao = cadastro["possui_permissao"]
 
-if not nome:  #if signfica se, e not nome verifica se o nome está vazio
-    print("Acesso negado: nome não informado.")
+        if not nome: #se não informar nome
+            print("Acesso negado: nome não informado.")
 
-elif not idade_texto.isdigit():
-    print("Acesso negado: idade inválida.")
+        elif idade < 18: #se o nome não estiver vazio mas idade não +18 negar
+            print("Acesso negado: idade mínima não atingida.")
 
-else:
-    idade = int(idade_texto)
+        elif not usuario_ativo: #se o nome estiver ok e a idade também , verifcar se o usuário está ativo,caso não negar
+            print("Acesso negado: usuário inativo.")
 
-    if idade < 18:
-        print("Acesso negado: idade mínima não atingida.")
+        elif not possui_permissao:
+            print("Acesso negado: usuário sem permissão.")
 
-    elif not usuario_ativo:
-        print("Acesso negado: usuário inativo.")
+        else:
+            print(f"Acesso permitido para {nome}.") 
+#f-string para inserir variáveis em um texto
 
-    elif not possui_permissao:
-        print("Acesso negado: usuário sem permissão.")
-
-    else:
-        nome = nome.title()                                   
-        print(f"Acesso permitido para {nome}.") #F-string-> coloca-se um f antes da string e o nome da variável dentro das chaves
+verificar_cadastros(casos_teste)
