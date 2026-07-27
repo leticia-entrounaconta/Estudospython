@@ -42,4 +42,4 @@ for status, lista_resultados in resultados_agrupados.items():
     for resultado in lista_resultados:
         print("-", resultado["cpf"])
 
-        print()
+print()

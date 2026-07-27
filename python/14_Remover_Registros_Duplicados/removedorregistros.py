@@ -1,17 +1,4 @@
-def remover_clientes_duplicados(lista_clientes):
-    cpfs_vistos = set()
-    clientes_unicos = []
-    
-    for cliente in lista_clientes:
-        cpf = cliente.get('cpf')
-        if cpf not in cpfs_vistos:
-            cpfs_vistos.add(cpf)
-            clientes_unicos.append(cliente)
-            
-    return clientes_unicos
-
-# Exemplo de uso:
-dados_clientes = [
+clientes = [
     {
         "nome": "João Silva",
         "cpf": "12345678901"
@@ -33,5 +20,38 @@ dados_clientes = [
         "cpf": "98765432100"
     }
 ]
-resultado = remover_clientes_duplicados(dados_clientes)
-print(resultado)
+
+cpfs_encontrados = set()
+
+clientes_sem_duplicidade = []
+
+duplicados_removidos = 0
+
+for cliente in clientes:
+    cpf = cliente["cpf"]
+
+    if cpf not in cpfs_encontrados:
+        cpfs_encontrados.add(cpf)
+        clientes_sem_duplicidade.append(cliente)
+    else:
+        duplicados_removidos +=1
+print("Clientes sem duplicidade:")
+
+for cliente in clientes_sem_duplicidade:
+    print(f'{(cliente ["nome"])} - {cliente["cpf"]}')
+
+print(
+    "\nTotal de registros recebidos:",
+    len(clientes)
+)
+
+print(
+    "Total de Clientes únicos:",
+    len(clientes_sem_duplicidade)
+
+)
+
+print(
+    "Total de duplicaods recebidos:",
+    duplicados_removidos
+)
